@@ -1,1 +1,13 @@
 @import "bootstrap";
+
+div {
+  border-style: dotted;
+  border-color: black;
+  border-width: 1px;
+  margin:100px
+}
+
+.centerText {
+  text-align: center;
+  color: #8A2BE2;
+}
