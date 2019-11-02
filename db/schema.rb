@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_014409) do
+ActiveRecord::Schema.define(version: 2019_11_01_014543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "players", force: :cascade do |t|
+    t.string "username"
+    t.string "profilePicture"
+    t.integer "userScore"
+    t.text "contQids", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "ID"
@@ -25,6 +34,12 @@ ActiveRecord::Schema.define(version: 2019_10_31_014409) do
     t.string "wrongAnswer1"
     t.string "wrongAnswer2"
     t.string "wrongAnswer3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.text "quizQids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
