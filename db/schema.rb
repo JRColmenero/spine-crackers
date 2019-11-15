@@ -10,36 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_014543) do
+ActiveRecord::Schema.define(version: 2019_11_01_013454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "players", force: :cascade do |t|
-    t.string "username"
-    t.string "profilePicture"
-    t.integer "userScore"
-    t.text "contQids", default: [], array: true
+    t.integer "user_id"
+    t.string "profile_picture"
+    t.integer "games_count"
+    t.integer "user_score"
+    t.text "quiz_q"
+    t.text "cont_q"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "ID"
     t.string "username"
-    t.string "bookName"
-    t.string "authorName"
-    t.string "questions"
-    t.string "correctAnswer"
-    t.string "wrongAnswer1"
-    t.string "wrongAnswer2"
-    t.string "wrongAnswer3"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "quizzes", force: :cascade do |t|
-    t.text "quizQids"
+    t.string "book_name"
+    t.string "author_name"
+    t.string "question"
+    t.string "correct_answer"
+    t.string "wrong_answer_1"
+    t.string "wrong_answer_2"
+    t.string "wrong_answer_3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

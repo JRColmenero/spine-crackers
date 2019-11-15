@@ -1,15 +1,22 @@
+<%= plus_one %>
+
 <div class="container"> 
   <div class="row">
     <div class="col-4">
-      Profile Picture
+      Profile Picture <br>
+      <%= current_user.player.profile_picture %>
       <br><br>
-      Username
+      <%= current_user.email %>
       <br><br>
       Rank
       <br><br>
-      Overall Score
+      Overall Score <br>
+      <%= current_user.player.user_score %>
       <br><br>
-      Number of Games Played
+      Number of Games Played <br>
+      <%= current_user.player.games_count %>
+      <br><br>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
     </div>
 
     <div class="col-4">
@@ -40,7 +47,7 @@
           <br>
           Score
         </div>
-    </div>
+      </div>
      <div class="row"> 
         <div class="col-3">
           Profile Picture
@@ -89,7 +96,7 @@
           Score
         </div>
     </div>
-    
 
     </div>
+  </div>
 </div>

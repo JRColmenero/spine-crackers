@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   root 'games#index'
   get 'games/userpage'
   get 'games/quiz'
+  get 'games/submit'
+  resources :player
+
+
+
 end
