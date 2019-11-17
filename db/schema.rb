@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_013454) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "username"
+    t.integer "user_id"
     t.string "book_name"
     t.string "author_name"
     t.string "question"

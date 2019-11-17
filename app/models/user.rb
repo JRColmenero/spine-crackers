@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :player
+  has_many :questions
+  
   before_create :build_player
   accepts_nested_attributes_for :player
 

@@ -72,3 +72,4 @@ end
 gem 'mini_racer'
 
 gem 'devise'
+gem 'simple_form'
