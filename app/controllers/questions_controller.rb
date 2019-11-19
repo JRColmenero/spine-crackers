@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:book_name, :author_name, :question, :correct_answer, :wrong_answer_1, :wrong_answer_2, :wrong_answer_3)
+    params.require(:question).permit(:user_id, :book_name, :author_name, :question, :correct_answer, :wrong_answer_1, :wrong_answer_2, :wrong_answer_3)
   end
 
 end

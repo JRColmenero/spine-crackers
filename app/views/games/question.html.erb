@@ -1,13 +1,13 @@
 <div class="booyah-box col-10 offset-1">
   <h1>Enter Question Here</h1>
   <%= simple_form_for(current_user.questions.create) do |f| %>
-    <%= f.input :book_name %> 
-    <%= f.input :author_name %>
-    <%= f.input :question %>
-    <%= f.input :correct_answer %>
-    <%= f.input :wrong_answer_1 %>
-    <%= f.input :wrong_answer_2 %>
-    <%= f.input :wrong_answer_3 %>
+    <%= f.input :book_name, label: 'Book Name' %> 
+    <%= f.input :author_name,label: 'Author Name' %>
+    <%= f.input :question,label: 'Your Question' %>
+    <%= f.input :correct_answer,label: 'Correct Answer' %>
+    <%= f.input :wrong_answer_1,label: 'Wrong Answer 1' %>
+    <%= f.input :wrong_answer_2,label: 'Wrong Answer 2' %>
+    <%= f.input :wrong_answer_3,label: 'Wrong Answer 3' %>
     <%= f.submit 'Create', class: 'btn btn-outline-info btn-lg' %>
      <button type="button" class="btn btn-outline-info btn-lg" onclick="window.location.href = '/games/userpage';">Back</button>
   <% end %>
