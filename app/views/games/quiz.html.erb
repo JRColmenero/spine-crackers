@@ -8,16 +8,20 @@
     </div>  
   </div>
 
+  <% @qid = rand(1..10) %>
+ 
   <div class="row centerText">
-    Username of Question Creator
+    <% if Question.find(@qid).user_id != nil %>
+      <%= User.find(Question.find(@qid).user_id).email %>
+    <% end %>
     <div class="col-12 centerText">
-      Question
+      <%= Question.find(@qid).question %>
     </div>
     <div class="col-4">
-      Book Name
+      <%= Question.find(@qid).book_name %>
     </div>
     <div class="offset-4 col-4">
-      Author
+      <%= Question.find(@qid).author_name %>
     </div>
   </div>
 
