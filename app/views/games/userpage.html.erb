@@ -1,14 +1,11 @@
-
+<% generate_game %>
 
 <div class="container"> 
   <div class="row">
-    <div class="col-4">
-      Profile Picture <br>
-      <%= current_user.player.profile_picture %>
-      <br><br>
+    <div class="col-6">
+      <%= image_tag("profile-pic.png", :class => "profile_pic") %>
+      <br>
       <%= current_user.email %>
-      <br><br>
-      Rank
       <br><br>
       Overall Score <br>
       <%= current_user.player.user_score %>
@@ -16,85 +13,26 @@
       Number of Games Played <br>
       <%= current_user.player.games_count %>
       <br><br>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-info button_text' %>
     </div>
 
-    <div class="col-4">
-      <button>
-        Continue
-      </button>
+    <div class="col-6" style="margin: auto">
+      
+      <% cache('our_public_tweets', expires_in: 12.hours) do %>        
+        <div class="testimonial-quote group">
+          <div class="quote-container">
+            <blockquote>
+                <p><%= TwitterApi.our_public_tweets.sample.text %></p>
+            </blockquote>
+          </div>
+        </div>        
+      <% end %>
+      
       <br><br>
-      <button>
-        Start New Game
-      </button>
-      <br><br>
-       <button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="window.location.href = '/games/question';">Submit Quiz Question</button>
-    </div>
 
-    <div class="col-4">
-      Leaderboard
+      <button type="button" class="btn btn-outline-info btn-block button_text" onclick="window.location.href = '/games/quiz';">Start New Game</button>
       <br><br>
-      <div class="row"> 
-        <div class="col-3">
-          Profile Picture
-        </div>
-        <div class="col-9">
-          Username 
-          <br>
-          Rank
-          <br>
-          Score
-        </div>
-      </div>
-     <div class="row"> 
-        <div class="col-3">
-          Profile Picture
-        </div>
-        <div class="col-9">
-          Username 
-          <br>
-          Rank
-          <br>
-          Score
-        </div>
-    </div>
-     <div class="row"> 
-        <div class="col-3">
-          Profile Picture
-        </div>
-        <div class="col-9">
-          Username 
-          <br>
-          Rank
-          <br>
-          Score
-        </div>
-    </div>
-     <div class="row"> 
-        <div class="col-3">
-          Profile Picture
-        </div>
-        <div class="col-9">
-          Username 
-          <br>
-          Rank
-          <br>
-          Score
-        </div>
-    </div>
-     <div class="row"> 
-        <div class="col-3">
-          Profile Picture
-        </div>
-        <div class="col-9">
-          Username 
-          <br>
-          Rank
-          <br>
-          Score
-        </div>
-    </div>
-
+       <button type="button" class="btn btn-outline-info btn-block button_text" onclick="window.location.href = '/games/question';">Submit Question</button>
     </div>
   </div>
 </div>

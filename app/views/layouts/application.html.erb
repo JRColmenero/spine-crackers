@@ -13,18 +13,33 @@
 
     
 
-</nav>
+    </nav>
 
-<% if notice.present? %>
-  <p class="alert alert-info"><%= notice %></p>
-<% end %>
-<% if alert.present? %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<header class="row">
+      <% if notice.present? %>
+        <p class="alert alert-info"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    <header class="row">
     </header>
 
-<%= yield %>
+    <div id="wrap">
+      <div id="main" class="clear-top">
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div style="text-align: center; margin: auto"> 
+            &#x24B8; 2019 Spine Crackers was created by a fellow book lover named Rebekah Colmenero.
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </body>
 </html>

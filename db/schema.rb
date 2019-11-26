@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2019_11_01_013454) do
     t.string "profile_picture"
     t.integer "games_count"
     t.integer "user_score"
-    t.text "quiz_q"
-    t.text "cont_q"
+    t.text "quiz_q", default: [], array: true
+    t.text "cont_q", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

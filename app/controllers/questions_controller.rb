@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    redirect_to "/games/userpage"
   end
 
   def update

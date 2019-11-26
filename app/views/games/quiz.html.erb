@@ -1,45 +1,97 @@
+<% lets_play %>
+
+<script type="text/javascript">    
+        $('#myModal').modal('show');
+</script>
+
+<% if @level > 1 %>
+  <div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <% if @last_question_status == "F" %>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">OOPS!</h5>
+            
+          </div>
+          <div class="modal-body">
+            <p><%= Question.find(@last_question).question %></p>
+            <p>The correct answer was <strong><%= Question.find(@last_question).correct_answer %></strong></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Next Question</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">CORRECT!</h5>
+            
+          </div>
+          <div class="modal-body">
+            <p>You're pretty good at this!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Next Question</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
 <div class="container">
   <div class="row">
-    <div class="col-4 centerText">
-      Score
+    <div class="col-3 centerText status_box">
+      Score: <%= @score %>
     </div>
-    <div class="offset-4 col-4 centerText">
-      Level
+    <div class="offset-6 col-3 centerText status_box">
+      Level: <%= @level %>
     </div>  
   </div>
-
-  <% @qid = rand(1..10) %>
  
+
   <div class="row centerText">
     <% if Question.find(@qid).user_id != nil %>
       <%= User.find(Question.find(@qid).user_id).email %>
     <% end %>
     <div class="col-12 centerText">
-      <%= Question.find(@qid).question %>
+      <h3><%= Question.find(@qid).question %></h3>
     </div>
     <div class="col-4">
-      <%= Question.find(@qid).book_name %>
+      Book: <i><%= Question.find(@qid).book_name %></i>
     </div>
     <div class="offset-4 col-4">
-      <%= Question.find(@qid).author_name %>
+      by: <%= Question.find(@qid).author_name %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-6 centerText">
-      1
-    </div>
-    <div class="col-6 centerText">
-      2
-    </div> 
-  </div>
 
-  <div class="row">
-    <div class="col-6 centerText">
-      3
-    </div>
-    <div class="col-6 centerText">
-      4
-    </div> 
+    <% @mixer = ["a","b","c","d"].shuffle %>
+
+    <% @mixer.each do |n| %>
+
+      <% if n == "a" %>
+        <div class="col-6 centerText">
+          <%= link_to Question.find(@qid).correct_answer, correct_answer_games_path, class: "btn btn-outline-info btn-lg btn-block answer button_text" %>
+         </div>
+      <% elsif n == "b" %>
+        <div class="col-6 centerText">
+         <%= link_to Question.find(@qid).wrong_answer_1, wrong_answer_games_path, class: "btn btn-outline-info btn-lg btn-block answer button_text" %>
+        </div>
+      <% elsif n == "c" %>
+        <div class="col-6 centerText">
+           <%= link_to Question.find(@qid).wrong_answer_2, wrong_answer_games_path, class: "btn btn-outline-info btn-lg btn-block answer button_text" %>
+        </div>
+      <% elsif n == "d" %>  
+        <div class="col-6 centerText">
+           <%= link_to Question.find(@qid).wrong_answer_3, wrong_answer_games_path, class: "btn btn-outline-info btn-lg btn-block answer button_text" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

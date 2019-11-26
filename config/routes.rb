@@ -9,4 +9,13 @@ Rails.application.routes.draw do
   resources :player
   resources :questions
 
+  resources :games do
+    collection do
+      get :correct_answer
+      get :wrong_answer
+      get :game_end
+    end
+  end
+
+
 end

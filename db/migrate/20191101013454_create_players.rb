@@ -5,8 +5,8 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
       t.string :profile_picture
       t.integer :games_count
       t.integer :user_score
-      t.text :quiz_q
-      t.text :cont_q
+      t.text :quiz_q, array: true, default: []
+      t.text :cont_q, array: true, default: []
       t.timestamps
     end
   end
